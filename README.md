@@ -102,6 +102,16 @@ docker compose --env-file /opt/crossfit/<entorno>/.env \
 - **Preproducción**: automático tras fusionar en `main`, con etiqueta `sha-<commit>`.
 - **Producción**: tras un release SemVer, con aprobación manual del entorno `production`, con etiqueta `vX.Y.Z`.
 
+### Probar una rama en PRE
+
+Cada repositorio de servicio incluye el workflow **Deploy branch to preproduction**. En GitHub:
+
+1. Abrir **Actions** en `crossfit-api` o `crossfit-web`.
+2. Seleccionar **Deploy branch to preproduction**.
+3. Pulsar **Run workflow** e indicar el nombre de la rama, un tag o un SHA.
+
+El workflow construye una imagen ARM64 con la etiqueta inmutable `preview-<sha>` y actualiza solo ese servicio en PRE. No fusiona código ni crea una release. Esto permite validar, por ejemplo, una rama `feat/registro-wod` antes de abrir o fusionar su pull request.
+
 ## Rollback
 
 ```bash

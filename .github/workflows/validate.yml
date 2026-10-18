@@ -1,0 +1,21 @@
+name: Validate compose
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  compose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate environment stacks
+        run: |
+          for env in preproduction production; do
+            docker compose --env-file "environments/$env/.env.example" \
+              -f "environments/$env/docker-compose.yml" config --quiet
+          done

@@ -24,6 +24,7 @@ services:
     environment:
       NODE_ENV: production
       DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      OPENCLAW_SERVICE_KEY: ${OPENCLAW_SERVICE_KEY}
       ATHLETE_DISPLAY_NAME: ${ATHLETE_DISPLAY_NAME:-Atleta}
       ATHLETE_TIMEZONE: ${ATHLETE_TIMEZONE:-Europe/Madrid}
     depends_on:

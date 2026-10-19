@@ -22,6 +22,8 @@ services:
     environment:
       NODE_ENV: production
       DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      ATHLETE_DISPLAY_NAME: ${ATHLETE_DISPLAY_NAME:-Atleta}
+      ATHLETE_TIMEZONE: ${ATHLETE_TIMEZONE:-Europe/Madrid}
     depends_on:
       migrate:
         condition: service_completed_successfully

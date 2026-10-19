@@ -59,6 +59,8 @@ Variables:
 | `WEB_IMAGE` | imagen de la PWA con su etiqueta |
 | `SITE_ADDRESS` | nombre local del entorno |
 | `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB` | credenciales de la base de datos |
+| `ATHLETE_DISPLAY_NAME` | nombre visible del perfil local inicial |
+| `ATHLETE_TIMEZONE` | zona horaria deportiva, por defecto `Europe/Madrid` |
 
 ## Runner autohospedado
 

@@ -61,6 +61,7 @@ Variables:
 | `POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DB` | credenciales de la base de datos |
 | `ATHLETE_DISPLAY_NAME` | nombre visible del perfil local inicial |
 | `ATHLETE_TIMEZONE` | zona horaria deportiva, por defecto `Europe/Madrid` |
+| `OPENCLAW_SERVICE_KEY` | credencial secreta usada por OpenClaw para publicar planificación |
 
 ## Runner autohospedado
 

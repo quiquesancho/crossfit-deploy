@@ -34,7 +34,8 @@ Etiquetas:
 
 | Etiqueta | Uso |
 | --- | --- |
-| `sha-<commit>` | candidata de preproducción |
+| `preview-<sha>` | candidata desplegada manualmente en preproducción |
+| `sha-<commit>` | imagen publicada desde `main`, sin despliegue automático |
 | `vX.Y.Z` | versión estable |
 | `latest` | última versión estable |
 
@@ -99,18 +100,18 @@ docker compose --env-file /opt/crossfit/<entorno>/.env \
   -f environments/<entorno>/docker-compose.yml up -d --pull always
 ```
 
-- **Preproducción**: automático tras fusionar en `main`, con etiqueta `sha-<commit>`.
+- **Preproducción**: manual mediante GitHub Actions, indicando una rama, tag o SHA; fusionar en `main` no modifica PRE.
 - **Producción**: tras un release SemVer, con aprobación manual del entorno `production`, con etiqueta `vX.Y.Z`.
 
-### Probar una rama en PRE
+### Desplegar una referencia en PRE
 
-Cada repositorio de servicio incluye el workflow **Deploy branch to preproduction**. En GitHub:
+Cada repositorio de servicio incluye el workflow **Deploy ref to preproduction**. En GitHub:
 
 1. Abrir **Actions** en `crossfit-api` o `crossfit-web`.
-2. Seleccionar **Deploy branch to preproduction**.
-3. Pulsar **Run workflow** e indicar el nombre de la rama, un tag o un SHA.
+2. Seleccionar **Deploy ref to preproduction**.
+3. Pulsar **Run workflow** e indicar el nombre de la rama, un tag o un SHA. Para validar lo último de `main`, indicar `main` explícitamente.
 
-El workflow construye una imagen ARM64 con la etiqueta inmutable `preview-<sha>` y actualiza solo ese servicio en PRE. No fusiona código ni crea una release. Esto permite validar, por ejemplo, una rama `feat/registro-wod` antes de abrir o fusionar su pull request.
+El workflow construye una imagen ARM64 con la etiqueta inmutable `preview-<sha>` y actualiza solo ese servicio en PRE. No fusiona código ni crea una release. Ninguna rama, incluida `main`, se despliega automáticamente.
 
 ## Rollback
 

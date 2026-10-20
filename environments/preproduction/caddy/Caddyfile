@@ -1,4 +1,4 @@
-{$SITE_ADDRESS} {
+{$SITE_ADDRESS}, 192.168.1.10 {
 	tls internal
 	encode gzip
 

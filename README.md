@@ -18,7 +18,7 @@ environments/
     .env.example
 ```
 
-- `preproduction`: expone `8080` (HTTP) y `8443` (HTTPS). Nombre local `preprod.crossfit.home.arpa`. PostgreSQL accesible solo en `127.0.0.1:5433` del host (para herramientas como DBeaver mediante túnel SSH).
+- `preproduction`: expone `8080` (HTTP) y `8443` (HTTPS). Es accesible como `https://preprod.crossfit.home.arpa:8443` y directamente como `https://192.168.1.10:8443`. PostgreSQL accesible solo en `127.0.0.1:5433` del host (para herramientas como DBeaver mediante túnel SSH).
 - `production`: expone `80` (HTTP) y `443` (HTTPS). Nombre local `crossfit.home.arpa`.
 
 Cada entorno es un proyecto Compose aislado (`crossfit-pre`, `crossfit-prod`) con su propia red, volúmenes y base de datos.
